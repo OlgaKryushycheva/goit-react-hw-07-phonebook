@@ -1,3 +1,37 @@
-export const getContacts = state => state.contacts.data;
+import { createSelector } from '@reduxjs/toolkit';
 
-export const getFilter = state => state.filter.value;
+export const selectContacts = state => state.contacts.items;
+export const selectIsLoading = state => state.contacts.isLoading;
+export const selectError = state => state.filter.error;
+export const selectFilter = state => state.filter.value;
+
+// === мемоизированный селектор. Нет разницы с составным ===
+export const selectFilteredContacts = createSelector(
+  [selectContacts, selectFilter],
+
+  (contacts, filter) => {
+    // console.log('memoSelect');
+
+    const filterContact = contacts.filter(contact =>
+      contact.name
+        .toLocaleLowerCase()
+        .includes(filter.toLocaleLowerCase().trim())
+    );
+
+    return filterContact;
+  }
+);
+
+// ==== составной селектор. Нет разныцы с мемоизированным ===
+// export const selectFilteredContacts = state => {
+//   console.log('select');
+
+//   const contacts = selectContacts(state);
+//   const filter = selectFilter(state);
+
+//   const filterContact = contacts.filter(contact =>
+//     contact.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase().trim())
+//   );
+
+//   return filterContact;
+// };

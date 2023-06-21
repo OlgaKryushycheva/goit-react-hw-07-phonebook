@@ -1,6 +1,10 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
+
 import {
   Label,
   Form,
@@ -8,9 +12,6 @@ import {
   Field,
   Btn,
 } from '../Styles/StyleForm.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
-import { getContacts } from 'redux/selectors';
 
 const phoneRegExp = /[+3][0-9]{12}$/;
 
@@ -26,7 +27,7 @@ const ContactSchema = Yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   return (
     <Formik

@@ -3,20 +3,22 @@ import data from '../data.json';
 
 const contactsSlice = createSlice({
   name: 'contacts',
+  // initialState,
+
   initialState: {
-    data,
+    items: data,
   },
 
   reducers: {
     addContact(state, action) {
-      state.data.unshift(action.payload);
+      state.items.unshift(action.payload);
     },
 
     deliteContact(state, action) {
-      const index = state.data.findIndex(
+      const index = state.items.findIndex(
         contact => contact.id === action.payload
       );
-      state.data.splice(index, 1);
+      state.items.splice(index, 1);
     },
   },
 });
