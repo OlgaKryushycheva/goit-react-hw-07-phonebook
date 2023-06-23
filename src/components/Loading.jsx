@@ -1,5 +1,3 @@
-// import { Load } from 'styles/StyleForm.styled';
+import { Load } from 'styles/StyleForm.styled';
 
-// export const Loading = () => <Load>Loading...</Load>;
-
-export const Loading = () => <p>Loading...</p>;
+export const Loading = () => <Load>Loading...</Load>;
