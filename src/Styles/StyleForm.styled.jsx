@@ -7,7 +7,7 @@ export const Container = styled.div`
   width: 430px;
   padding: 30px;
   margin: 10px auto;
-  background-color: white;
+  background-color: ${props => props.theme.colors.white};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -16,7 +16,7 @@ export const Container = styled.div`
   font-weight: 700;
   line-height: 1.17;
   letter-spacing: 0.03em;
-  color: black;
+  color: ${props => props.theme.colors.black};
 `;
 
 export const Title = styled.h1`
@@ -30,7 +30,7 @@ export const Form = styled(FormikForm)`
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
-  outline: 2px solid black;
+  outline: 2px solid ${props => props.theme.colors.black};
   outline-offset: -2px;
   border-radius: 4px;
 `;
@@ -48,20 +48,20 @@ export const Field = styled(FormikField)`
   width: 200px;
   height: 30px;
   padding: 5px 7px;
-  border: 1px solid black;
+  border: 1px solid ${props => props.theme.colors.black};
   border-radius: 4px;
   outline: none;
 
   :hover,
   :focus {
-    border: 1px solid blue;
+    border: 1px solid ${props => props.theme.colors.blue};
   }
 `;
 
 export const ErrorMessage = styled(FormikMessage)`
   font-size: 16px;
   font-weight: 400;
-  color: red;
+  color: ${props => props.theme.colors.red};
 `;
 
 export const TitleContact = styled.h2`
@@ -91,7 +91,7 @@ export const Btn = styled.button`
   max-width: 150px;
   height: 30px;
   border-radius: 4px;
-  border: 1px solid black;
+  border: 1px solid ${props => props.theme.colors.black};
   cursor: pointer;
 
   transition-property: color, background-color, border-color, box-shadow;
@@ -100,29 +100,29 @@ export const Btn = styled.button`
 
   :hover,
   :focus {
-    color: white;
-    background-color: blue;
-    border-color: blue;
+    color: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.colors.blue};
+    border-color: ${props => props.theme.colors.blue};
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
       0px 2px 2px rgba(0, 0, 0, 0.12);
   }
 `;
 
 export const Load = styled.p`
-  color: blue;
+  color: ${props => props.theme.colors.blue};
   margin-bottom: 15px;
 `;
 
 export const Err = styled.p`
-  color: red;
+  color: ${props => props.theme.colors.red};
 `;
 
-// =======================================
+// ========================================
 // export const Container = styled.div`
 //   width: 430px;
 //   padding: 30px;
 //   margin: 10px auto;
-//   background-color: ${props => props.theme.colors.white};
+//   background-color: white;
 //   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 //     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
 //     sans-serif;
@@ -131,7 +131,7 @@ export const Err = styled.p`
 //   font-weight: 700;
 //   line-height: 1.17;
 //   letter-spacing: 0.03em;
-//   color: ${props => props.theme.colors.black};
+//   color: black;
 // `;
 
 // export const Title = styled.h1`
@@ -145,7 +145,7 @@ export const Err = styled.p`
 //   width: 100%;
 //   padding: 10px;
 //   margin-bottom: 20px;
-//   outline: 2px solid ${props => props.theme.colors.black};
+//   outline: 2px solid black;
 //   outline-offset: -2px;
 //   border-radius: 4px;
 // `;
@@ -163,20 +163,20 @@ export const Err = styled.p`
 //   width: 200px;
 //   height: 30px;
 //   padding: 5px 7px;
-//   border: 1px solid ${props => props.theme.colors.black};
+//   border: 1px solid black;
 //   border-radius: 4px;
 //   outline: none;
 
 //   :hover,
 //   :focus {
-//     border: 1px solid ${props => props.theme.colors.blue};
+//     border: 1px solid blue;
 //   }
 // `;
 
 // export const ErrorMessage = styled(FormikMessage)`
 //   font-size: 16px;
 //   font-weight: 400;
-//   color: ${props => props.theme.colors.red};
+//   color: red;
 // `;
 
 // export const TitleContact = styled.h2`
@@ -206,7 +206,7 @@ export const Err = styled.p`
 //   max-width: 150px;
 //   height: 30px;
 //   border-radius: 4px;
-//   border: 1px solid ${props => props.theme.colors.black};
+//   border: 1px solid black;
 //   cursor: pointer;
 
 //   transition-property: color, background-color, border-color, box-shadow;
@@ -215,19 +215,19 @@ export const Err = styled.p`
 
 //   :hover,
 //   :focus {
-//     color: ${props => props.theme.colors.white};
-//     background-color: ${props => props.theme.colors.blue};
-//     border-color: ${props => props.theme.colors.blue};
+//     color: white;
+//     background-color: blue;
+//     border-color: blue;
 //     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
 //       0px 2px 2px rgba(0, 0, 0, 0.12);
 //   }
 // `;
 
 // export const Load = styled.p`
-//   color: ${props => props.theme.colors.blue};
+//   color: blue;
 //   margin-bottom: 15px;
 // `;
 
 // export const Err = styled.p`
-//   color: ${props => props.theme.colors.red};
+//   color: red;
 // `;

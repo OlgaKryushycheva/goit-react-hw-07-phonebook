@@ -1,6 +1,6 @@
 import 'modern-normalize';
 import { css } from '@emotion/react';
-// import { theme } from './Theme';
+import { theme } from './Theme';
 
 export const GlobalStyles = css`
   body {
@@ -9,6 +9,7 @@ export const GlobalStyles = css`
       'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: ${theme.colors.backgroundGray};
   }
 
   code {
