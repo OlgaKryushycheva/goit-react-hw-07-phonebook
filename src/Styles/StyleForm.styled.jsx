@@ -108,11 +108,11 @@ export const Btn = styled.button`
   }
 `;
 
-export const Load = styled.p`
-  color: ${props => props.theme.colors.blue};
-  margin-bottom: 15px;
-`;
+// export const Load = styled.p`
+//   color: ${props => props.theme.colors.blue};
+//   margin-bottom: 15px;
+// `;
 
-export const Err = styled.p`
-  color: ${props => props.theme.colors.red};
-`;
+// export const Err = styled.p`
+//   color: ${props => props.theme.colors.red};
+// `;

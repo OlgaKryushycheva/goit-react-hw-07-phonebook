@@ -1,16 +1,6 @@
 import 'modern-normalize';
 import { css } from '@emotion/react';
-// import { theme } from './Theme';
-
-export const theme = {
-  colors: {
-    black: '#212121',
-    white: '#ffffff',
-    blue: '#2196f3',
-    red: '#e01e3f',
-    backgroundGray: '#ededed',
-  },
-};
+import { theme } from './Theme';
 
 export const GlobalStyles = css`
   body {
