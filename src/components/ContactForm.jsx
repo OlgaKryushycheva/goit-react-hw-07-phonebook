@@ -1,8 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
 import { selectContacts } from 'redux/selectors';
 
 import {
@@ -11,7 +9,8 @@ import {
   ErrorMessage,
   Field,
   Btn,
-} from '../Styles/StyleForm.styled';
+} from '../styles/StyleForm.styled';
+import { addContact } from 'redux/thunks';
 
 const phoneRegExp = /[+3][0-9]{12}$/;
 
@@ -20,7 +19,7 @@ const ContactSchema = Yup.object().shape({
     .min(5, 'Слишком короткое!')
     .max(20, 'Слишком длинное!')
     .required('Заполните это поле'),
-  number: Yup.string()
+  phone: Yup.string()
     .matches(phoneRegExp, 'Заполните поле в формате +380000000000')
     .required('Заполните это поле'),
 });
@@ -29,28 +28,27 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
+  const values = {
+    name: '',
+    phone: '',
+  };
+
+  const handleSubmit = (values, actions) => {
+    const isExist = contacts.find(contact => contact.name === values.name);
+
+    if (isExist) {
+      alert(`${values.name} ia already in contacts`);
+    } else {
+      dispatch(addContact(values));
+    }
+    actions.resetForm();
+  };
+
   return (
     <Formik
-      initialValues={{
-        name: '',
-        number: '',
-      }}
+      initialValues={values}
       validationSchema={ContactSchema}
-      onSubmit={(values, actions) => {
-        const newContact = {
-          ...values,
-          id: nanoid(),
-        };
-
-        const isExist = contacts.find(contact => contact.name === values.name);
-        if (isExist) {
-          alert(`${values.name} ia already in contacts`);
-        } else {
-          dispatch(addContact(newContact));
-        }
-
-        actions.resetForm();
-      }}
+      onSubmit={handleSubmit}
     >
       <Form>
         <Label>
@@ -61,8 +59,8 @@ export const ContactForm = () => {
 
         <Label>
           Number
-          <Field name="number" type="tel" />
-          <ErrorMessage name="number" component={'span'} />
+          <Field name="phone" type="tel" />
+          <ErrorMessage name="phone" component={'span'} />
         </Label>
 
         <Btn type="submit">Add contact</Btn>

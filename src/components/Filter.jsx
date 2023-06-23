@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { filterContact } from 'redux/filterSlice';
-import { Label, Field } from '../Styles/StyleForm.styled';
+import { Label, Field } from '../styles/StyleForm.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();

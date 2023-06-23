@@ -1,27 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit';
-import data from '../data.json';
+import {
+  fetchSuccses,
+  addSuccses,
+  deleteleSuccses,
+  handlePending,
+  handleRejected,
+} from './hendlers';
+import { initialState } from './initialState';
+import { deleteContact, fetchContacts, addContact } from './thunks';
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  // initialState,
-
-  initialState: {
-    items: data,
-  },
-
-  reducers: {
-    addContact(state, action) {
-      state.items.unshift(action.payload);
-    },
-
-    deliteContact(state, action) {
-      const index = state.items.findIndex(
-        contact => contact.id === action.payload
-      );
-      state.items.splice(index, 1);
-    },
+  initialState,
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.fulfilled, fetchSuccses)
+      .addCase(addContact.fulfilled, addSuccses)
+      .addCase(deleteContact.fulfilled, deleteleSuccses)
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
-export const { addContact, deliteContact } = contactsSlice.actions;
 export const contactsReduser = contactsSlice.reducer;
+
+// =================================================
+
+// СТАРЫЙ синтаксис
+
+// extraReducers: {
+//   [fetchContacts.pending](state) {
+//     state.isLoading = true;
+//   },
+//   [fetchContacts.fulfilled](state, action) {
+//     state.isLoading = false;
+//     state.error = null;
+//     state.items = action.payload;
+//   },
+//   [fetchContacts.rejected](state, action) {
+//     state.isLoading = false;
+//     state.error = action.payload;
+//     console.log(action.payload);
+//   },
+//   [addContact.fulfilled]; (state, action) => {
+//     state.isLoading = false;
+//     state.error = null;
+//     state.items.push(action.payload);
+//   },
+// },

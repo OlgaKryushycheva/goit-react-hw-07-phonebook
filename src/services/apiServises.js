@@ -1,54 +1,21 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://64932984428c3d2035d170c9.mockapi.io/contacts';
+axios.defaults.baseURL = 'https://64932984428c3d2035d170c9.mockapi.io';
 
-async function getUser() {
-  try {
-    const response = await axios.get('/user?ID=12345');
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
+export const getContacts = async () => {
+  const { data } = await axios.get('/contacts');
+  return data;
+};
 
-async function postUser() {
-  try {
-    const response = await axios.post('/user?ID=12345', {
-      firstName: 'Fred',
-      lastName: 'Flintstone',
-    });
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function deleteUser() {
-  try {
-    const response = await axios.delete('/user?ID=12345');
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-axios
-  .post('/user', {
-    firstName: 'Fred',
-    lastName: 'Flintstone',
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
+export const cresteContact = async ({ name, phone }) => {
+  const { data } = await axios.post('/contacts', {
+    name,
+    phone,
   });
+  return data;
+};
 
-//  fetchContacts - получение массива контактов (метод GET) запросом.
-//  Базовый тип экшена "contacts/fetchAll".
-
-// addContact - добавление контакта (метод POST).
-// Базовый тип экшена "contacts/addContact".
-
-// deleteContact - удаление контакта (метод DELETE).
-// Базовый тип экшена "contacts/deleteContact".
+export const removeContact = async contactId => {
+  const { data } = await axios.delete(`/contacts/${contactId}`);
+  return data;
+};

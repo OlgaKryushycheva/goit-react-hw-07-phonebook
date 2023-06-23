@@ -107,3 +107,12 @@ export const Btn = styled.button`
       0px 2px 2px rgba(0, 0, 0, 0.12);
   }
 `;
+
+export const Load = styled.p`
+  color: ${props => props.theme.colors.blue};
+  margin-bottom: 15px;
+`;
+
+export const Err = styled.p`
+  color: ${props => props.theme.colors.red};
+`;
