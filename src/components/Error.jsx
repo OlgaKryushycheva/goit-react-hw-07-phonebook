@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectError } from 'redux/selectors';
-import { Err } from 'styles/StyleForm.styled';
+import { Err } from 'Styles/StyleForm.styled';
 
 export const Error = () => {
   const error = useSelector(selectError);

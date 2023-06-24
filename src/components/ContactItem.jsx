@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/thunks';
 // import { deleteContact } from 'redux/contactsSlice';
 
-import { Btn, Item } from 'styles/StyleForm.styled';
+import { Btn, Item } from 'Styles/StyleForm.styled';
 
 export const ContactItem = ({ contact: { name, phone, id } }) => {
   const dispatch = useDispatch();

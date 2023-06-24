@@ -1,7 +1,7 @@
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
-import { Container, Title, TitleContact } from 'styles/StyleForm.styled';
+import { Container, Title, TitleContact } from 'Styles/StyleForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
 import { useEffect } from 'react';

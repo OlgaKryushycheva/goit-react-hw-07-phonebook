@@ -9,7 +9,7 @@ import {
   ErrorMessage,
   Field,
   Btn,
-} from '../styles/StyleForm.styled';
+} from '../Styles/StyleForm.styled';
 import { addContact } from 'redux/thunks';
 
 const phoneRegExp = /[+3][0-9]{12}$/;
