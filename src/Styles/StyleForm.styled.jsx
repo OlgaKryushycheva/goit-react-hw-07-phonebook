@@ -4,7 +4,7 @@ import { ErrorMessage as FormikMessage } from 'formik';
 import { Field as FormikField } from 'formik';
 
 export const Container = styled.div`
-  width: 430px;
+  width: 530px;
   padding: 30px;
   margin: 10px auto;
   background-color: ${props => props.theme.colors.white};
@@ -45,7 +45,7 @@ export const Label = styled.label`
 
 export const Field = styled(FormikField)`
   display: block;
-  width: 200px;
+  width: 300px;
   height: 30px;
   padding: 5px 7px;
   border: 1px solid ${props => props.theme.colors.black};
